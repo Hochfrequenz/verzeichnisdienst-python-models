@@ -35,6 +35,7 @@ This approach has many advantages and basically means for developers, that all b
 ## How to use this Repository on Your Machine
 
 ### Installation of Tox / Creating the tox base venv
+
 If you ever set up your toxbase virtual environment already, skip this first step and continue with the project-specific setup.
 
 <details>
@@ -46,15 +47,19 @@ You can either follow the [installation instructions](https://tox.readthedocs.io
 Here we repeat the most important steps.
 
 #### Enure you are allowed to execute scripts in powershell (Windows only)
+
 On new Windows machines it is possible that the execution policy is set to restricted and you are not allowed execute scripts. You can find detailed information [here](https://learn.microsoft.com/de-de/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3).
 
 The quickest way to solve this problem: Open an Administrator Powershell (e.g. Windows PowerShell App, right click: 'Run as Adminstrator')
+
 ```ps
 Set-ExecutionPolicy -ExecutionPolicy AllSigned
 ```
+
 Then close the admin powershell and continue in the regular shell.
 
 #### Create the `.toxbase` environment
+
 `.toxbase` is a project independent virtual environment-template for all the tox environments on your machine. If anything is weird during the tox installation or after the installation, try turning your computer off and on again before getting too frustrated.
 Ask your Hochfrequenz colleagues for help.
 
@@ -66,6 +71,7 @@ $ python -m venv .toxbase
 ```
 
 then
+
 ```ps
 # Windows Powershell
 $ .\.toxbase\Scripts\Activate.ps1
@@ -79,26 +85,31 @@ $ .\.toxbase\Scripts\Activate.ps1
 ```
 
 #### Add the toxbase interpreter to the Path environment variable
+
 Finally, we need to make the tox command available in all future terminal sessions.
 There are ways to achieve this goal using only the powershell commands, but we just use the "regular" way:
 
-* Type systemvariable in the search field of your windows taskbar.
-* Click on Edit system variables, then on environment variables.
-* In the next window select Path in the upper part (User variables for YourUserName) and click on edit.
-* Add a new path with `C:\Users\YourUserName\.toxbase\Scripts\`
-  * ⚠️ You have to replace YourUserName with your actual username in the path!
-     the path up to .toxbase has already been printed to the CLI in the tox --version command above
+- Type systemvariable in the search field of your windows taskbar.
+- Click on Edit system variables, then on environment variables.
+- In the next window select Path in the upper part (User variables for YourUserName) and click on edit.
+- Add a new path with `C:\Users\YourUserName\.toxbase\Scripts\`
 
-* Save the settings.
-* Now you have to sign out and in again to make the changes work.
+  - ⚠️ You have to replace YourUserName with your actual username in the path!
+    the path up to .toxbase has already been printed to the CLI in the tox --version command above
+
+- Save the settings.
+- Now you have to sign out and in again to make the changes work.
 
 You should now be able to type the following and get a reasonable answer
+
 ```
 tox --version
 ```
+
 in every shell, no matter if you activated the toxbase again.
 
 #### Umlaute in Paths
+
 Tox has an issue if you have an umlaut in your username. [This issue](https://github.com/tox-dev/tox/issues/1550#issuecomment-727824763) is well known.
 
 To solve it you have to add another environment variable `PYTHONIOENCODING` with the value `utf-8` ([source](https://github.com/tox-dev/tox/issues/1550#issuecomment-1011952057)).
@@ -119,6 +130,7 @@ $ cd ~
 # Create a virtual environment called .toxbase
 $ python -m venv .toxbase
 ```
+
 Now we activate the virtual environment, update pip and install tox:
 
 ```
@@ -129,7 +141,9 @@ $ source .toxbase/bin/activate
 (.toxbase) $ pip install tox
 (.toxbase) $ tox --version
 ```
+
 Create a new folder bin in the home directory and add a symbolic link inside
+
 ```
 cd
 # create a `bin` directory
@@ -137,6 +151,7 @@ mkdir bin
 # set link to ~/bin/tox
 ln -s ~/.toxbase/bin/tox ~/bin/tox
 ```
+
 Set the PATH variable
 
 ```
@@ -149,7 +164,9 @@ PATH = "${HOME}/bin:${PATH}"
 export PATH
 # save and close the file with CTRL+O and CTRL+X
 ```
+
 #### fish
+
 ```
 cd
 # open the config.fish file
@@ -159,7 +176,9 @@ nano ~/.config/fish/config.fish
 set PATH {$HOME}/bin $PATH
 # save and close the file with CTRL+O and CTRL+X
 ```
+
 Check if everything works by opening a new terminal window and run
+
 ```bash
 tox --version
 ```
@@ -167,12 +186,14 @@ tox --version
 </details>
 
 ### Creating the project-specific dev environment.
+
 If tox is set up, you're ready to start:
-   1. clone the repository, you want to work in
-   2. create the `dev` environment on your machine. To do this:
-       a) Open a Powershell
-       b) change directory to your repository
-and finally type
+
+1.  clone the repository, you want to work in
+2.  create the `dev` environment on your machine. To do this:
+    a) Open a Powershell
+    b) change directory to your repository
+    and finally type
 
 ```bash
 tox -e dev
@@ -183,25 +204,26 @@ You have now created the development environment (dev environment). It is the en
 ### How to use with PyCharm
 
 1. You have cloned the repository, you want to work in, and have created the virtual environment, in which the repository should be executed (`your_repo/.tox/dev`). Now, to actually work inside the newly created environment, you need to tell PyCharm (your IDE) that it should use the virtual environment - to be more precise: the interpreter of this dev environment. How to do this:
-a) navigate to: File ➡ Settings (Strg + Alt + S) ➡ Project: your_project ➡ Python Interpreter ➡ Add interpreter ➡ Existing
-b) Choose as interpreter: `your_repo\.tox\dev\Scripts\python.exe` (under windows)
+   a) navigate to: File ➡ Settings (Strg + Alt + S) ➡ Project: your_project ➡ Python Interpreter ➡ Add interpreter ➡ Existing
+   b) Choose as interpreter: `your_repo\.tox\dev\Scripts\python.exe` (under windows)
 2. Set the default test runner of your project to pytest. How to do it:
-a) navigate to Files ➡ Settings ➡ Tools ➡ Python integrated tools ➡ Testing: Default test runner
-b) Change to "pytest"
-If this doesn't work anymore, see [the PyCharm docs](https://www.jetbrains.com/help/pycharm/choosing-your-testing-framework.html)
+   a) navigate to Files ➡ Settings ➡ Tools ➡ Python integrated tools ➡ Testing: Default test runner
+   b) Change to "pytest"
+   If this doesn't work anymore, see [the PyCharm docs](https://www.jetbrains.com/help/pycharm/choosing-your-testing-framework.html)
 3. Set the `src` directory as sources root. How to do this:
-right click on 'src' ➡ "Mark directory as…" ➡ sources root
-If this doesn't work anymore, see: [PyCharm docs](https://www.jetbrains.com/help/pycharm/content-root.html).
-Setting the `src` directory right, allows PyCharm to effectively suggest import paths.
-If you ever see something like `from src.mypackage.mymodule import ...`, then you probably forgot this step.
-5. Set the working directory of the unit tests to the project root (instead of the unittest directory). How to do this:
-a) Open any test file whose name starts with `test_` in unit tests/tests
-b) Right click inside the code ➡ More Run/Debug ➡ Modify Run Configuration ➡ expand Environment collapsible ➡ Working directory
-c) Change to `your_repo` instead of `your_repo\unittests`
-By doing so, the import and other file paths in the tests are relative to the repo root.
-If this doesn't work anymore, see: [working directory of the unit tests](https://www.jetbrains.com/help/pycharm/creating-run-debug-configuration-for-tests.html)
+   right click on 'src' ➡ "Mark directory as…" ➡ sources root
+   If this doesn't work anymore, see: [PyCharm docs](https://www.jetbrains.com/help/pycharm/content-root.html).
+   Setting the `src` directory right, allows PyCharm to effectively suggest import paths.
+   If you ever see something like `from src.mypackage.mymodule import ...`, then you probably forgot this step.
+4. Set the working directory of the unit tests to the project root (instead of the unittest directory). How to do this:
+   a) Open any test file whose name starts with `test_` in unit tests/tests
+   b) Right click inside the code ➡ More Run/Debug ➡ Modify Run Configuration ➡ expand Environment collapsible ➡ Working directory
+   c) Change to `your_repo` instead of `your_repo\unittests`
+   By doing so, the import and other file paths in the tests are relative to the repo root.
+   If this doesn't work anymore, see: [working directory of the unit tests](https://www.jetbrains.com/help/pycharm/creating-run-debug-configuration-for-tests.html)
 
 ### How to use with VS Code
+
 All paths mentioned in this section are relative to the repository root.
 
 1. Open the folder with VS Code.

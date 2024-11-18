@@ -14,31 +14,31 @@ paths:
         Schnittstelle des Verzeichnisdiensts sowie die Kontaktdaten des
         technischen Betreibers.
       responses:
-        '200':
+        "200":
           description: >-
             Die Anfrage wurde erfolgreich verarbeitet. Der Response Body enthält
             die angefragten Informationen.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ServiceInfo'
-        '400':
+                $ref: "#/components/schemas/ServiceInfo"
+        "400":
           description: >-
             Die Anfrage enthält Fehler und kann durch den Server nicht
             verarbeitet werden.
-        '403':
+        "403":
           description: >-
             Das TLS-Client-Zertifikat ist nicht vertrauenswürdig oder gehört
             nicht zur Klasse EMT.API.
-        '405':
+        "405":
           description: Die verwendete HTTP-Methode ist im aktuellen Kontext ungültig.
-        '429':
+        "429":
           description: Das Limit an Anfragen wurde überschritten.
-        '500':
+        "500":
           description: Bei der Bearbeitung der Anfrage ist ein interner Fehler aufgetreten.
-        '503':
+        "503":
           description: Die Anfrage kann temporär nicht verarbeitet werden.
-        '504':
+        "504":
           description: Bei der Bearbeitung der Anfrage ist ein Timeout aufgetreten.
   /record/{providerId}/{apiId}/{majorVersion}/v1:
     get:
@@ -79,7 +79,7 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: >-
             Die Anfrage wurde erfolgreich verarbeitet. Der Response Body enthält
             den angefragten Verzeichniseintrag.
@@ -93,7 +93,7 @@ paths:
                 description: >-
                   Das verwendete Signaturzertifikat; Hinweise in Kapitel
                   "Signatur von Verzeichniseinträgen" beachten.
-                format: ''
+                format: ""
             X-BDEW-SIGNATURE:
               description: >-
                 Die Signatur des Verzeichniseintrags; Hinweise in Kapitel
@@ -103,34 +103,34 @@ paths:
                 description: >-
                   Die Signatur des Verzeichniseintrags; Hinweise in Kapitel
                   "Signatur von Verzeichniseinträgen" beachten.
-                format: ''
+                format: ""
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiRecord'
-        '307':
+                $ref: "#/components/schemas/ApiRecord"
+        "307":
           description: >-
             Für den angeforderten Eintrag ist eine Weiterleitung zu einem
             anderen Verzeichnisdienst-Server aktiv.
-        '400':
+        "400":
           description: >-
             Die Anfrage enthält Fehler und kann durch den Server nicht
             verarbeitet werden.
-        '403':
+        "403":
           description: >-
             Das TLS-Client-Zertifikat ist nicht vertrauenswürdig oder gehört
             nicht zur Klasse EMT.API.
-        '404':
+        "404":
           description: Der angefragte Eintrag ist im Verzeichnis nicht vorhanden.
-        '405':
+        "405":
           description: Die verwendete HTTP-Methode ist im aktuellen Kontext ungültig.
-        '429':
+        "429":
           description: Das Limit an Anfragen wurde überschritten.
-        '500':
+        "500":
           description: Bei der Bearbeitung der Anfrage ist ein interner Fehler aufgetreten.
-        '503':
+        "503":
           description: Die Anfrage kann temporär nicht verarbeitet werden.
-        '504':
+        "504":
           description: Bei der Bearbeitung der Anfrage ist ein Timeout aufgetreten.
     put:
       tags:
@@ -184,14 +184,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApiRecord'
+              $ref: "#/components/schemas/ApiRecord"
         required: true
       responses:
-        '201':
+        "201":
           description: Ein neuer Eintrag wurde erfolgreich im Verzeichnis angelegt.
-        '204':
+        "204":
           description: Der bestehende Eintrag wurde erfolgreich aktualisiert.
-        '400':
+        "400":
           description: >-
             Die Anfrage enthält Fehler und kann durch den Server nicht
             verarbeitet werden.
@@ -209,20 +209,20 @@ paths:
                   Body nicht den oben beschriebenen Einschränkungen an die
                   Parametrisierung der Anfrage entspricht. DARF ansonsten NICHT
                   vorhanden sein.
-                format: ''
-        '403':
+                format: ""
+        "403":
           description: >-
             Die authentifizierungsrelevanten Parameter der Anfrage sind ungültig
             oder inkonsistent (s. Einschränkungen der Parametrisierung).
-        '405':
+        "405":
           description: Der Selfservice wird nicht unterstützt.
-        '429':
+        "429":
           description: Das Limit an Anfragen wurde überschritten.
-        '500':
+        "500":
           description: Bei der Bearbeitung der Anfrage ist ein interner Fehler aufgetreten.
-        '503':
+        "503":
           description: Die Anfrage kann temporär nicht verarbeitet werden.
-        '504':
+        "504":
           description: Bei der Bearbeitung der Anfrage ist ein Timeout aufgetreten.
     delete:
       tags:
@@ -256,27 +256,27 @@ paths:
             type: integer
             format: int32
       responses:
-        '204':
+        "204":
           description: Der Eintrag wurde erfolgreich aus dem Verzeichnis entfernt.
-        '400':
+        "400":
           description: >-
             Die Anfrage enthält Fehler und kann durch den Server nicht
             verarbeitet werden.
-        '403':
+        "403":
           description: >-
             Die authentifizierungsrelevanten Parameter der Anfrage sind ungültig
             oder inkonsistent (s. Einschränkungen der Parametrisierung).
-        '404':
+        "404":
           description: Der Eintrag ist im Verzeichnis nicht vorhanden.
-        '405':
+        "405":
           description: Der Selfservice wird nicht unterstützt.
-        '429':
+        "429":
           description: Das Limit an Anfragen wurde überschritten.
-        '500':
+        "500":
           description: Bei der Bearbeitung der Anfrage ist ein interner Fehler aufgetreten.
-        '503':
+        "503":
           description: Die Anfrage kann temporär nicht verarbeitet werden.
-        '504':
+        "504":
           description: Bei der Bearbeitung der Anfrage ist ein Timeout aufgetreten.
   /redirect/{providerId}/{apiId}/{majorVersion}/v1:
     put:
@@ -324,25 +324,25 @@ paths:
           schema:
             type: string
       responses:
-        '201':
+        "201":
           description: Der Redirect wurde erfolgreich eingerichtet.
-        '400':
+        "400":
           description: >-
             Die Anfrage enthält Fehler und kann durch den Server nicht
             verarbeitet werden.
-        '403':
+        "403":
           description: >-
             Die authentifizierungsrelevanten Parameter der Anfrage sind ungültig
             oder inkonsistent (s. Einschränkungen der Parametrisierung).
-        '405':
+        "405":
           description: Der Selfservice wird nicht unterstützt.
-        '429':
+        "429":
           description: Das Limit an Anfragen wurde überschritten.
-        '500':
+        "500":
           description: Bei der Bearbeitung der Anfrage ist ein interner Fehler aufgetreten.
-        '503':
+        "503":
           description: Die Anfrage kann temporär nicht verarbeitet werden.
-        '504':
+        "504":
           description: Bei der Bearbeitung der Anfrage ist ein Timeout aufgetreten.
     delete:
       tags:
@@ -376,27 +376,27 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: >-
             Der Redirect wurde erfolgreich gelöscht. Wird auch zurückgegeben,
             falls kein entsprechender Redirect vorhanden war.
-        '400':
+        "400":
           description: >-
             Die Anfrage enthält Fehler und kann durch den Server nicht
             verarbeitet werden.
-        '403':
+        "403":
           description: >-
             Die authentifizierungsrelevanten Parameter der Anfrage sind ungültig
             oder inkonsistent (s. Einschränkungen der Parametrisierung).
-        '405':
+        "405":
           description: Der Selfservice wird nicht unterstützt.
-        '429':
+        "429":
           description: Das Limit an Anfragen wurde überschritten.
-        '500':
+        "500":
           description: Bei der Bearbeitung der Anfrage ist ein interner Fehler aufgetreten.
-        '503':
+        "503":
           description: Die Anfrage kann temporär nicht verarbeitet werden.
-        '504':
+        "504":
           description: Bei der Bearbeitung der Anfrage ist ein Timeout aufgetreten.
   /ws/subscriptions/v1:
     get:
@@ -441,7 +441,7 @@ paths:
           schema:
             type: string
       responses:
-        '101':
+        "101":
           description: >-
             Die WebSocket-Verbindung konnte erfolgreich aufgebaut werden. Alle
             folgenden, über die bestehende Verbindung übertragenen Nachrichten
@@ -459,7 +459,7 @@ paths:
                   MUSS gemäß [RFC
                   6455](https://datatracker.ietf.org/doc/html/rfc6455) mit dem
                   Wert *websocket* belegt sein.
-                format: ''
+                format: ""
             Connection:
               description: >-
                 MUSS gemäß [RFC
@@ -471,7 +471,7 @@ paths:
                   MUSS gemäß [RFC
                   6455](https://datatracker.ietf.org/doc/html/rfc6455) mit dem
                   Wert *Upgrade* belegt sein.
-                format: ''
+                format: ""
             Sec-WebSocket-Accept:
               description: >-
                 MUSS gemäß [RFC
@@ -483,24 +483,24 @@ paths:
                   MUSS gemäß [RFC
                   6455](https://datatracker.ietf.org/doc/html/rfc6455) belegt
                   sein.
-                format: ''
-        '400':
+                format: ""
+        "400":
           description: >-
             Die Anfrage enthält Fehler und kann durch den Server nicht
             verarbeitet werden.
-        '403':
+        "403":
           description: >-
             Das TLS-Client-Zertifikat ist nicht vertrauenswürdig oder gehört
             nicht zur Klasse EMT.API.
-        '405':
+        "405":
           description: Die verwendete HTTP-Methode ist im aktuellen Kontext ungültig.
-        '429':
+        "429":
           description: Das Limit an Anfragen wurde überschritten.
-        '500':
+        "500":
           description: Bei der Bearbeitung der Anfrage ist ein interner Fehler aufgetreten.
-        '503':
+        "503":
           description: Die Anfrage kann temporär nicht verarbeitet werden.
-        '504':
+        "504":
           description: Bei der Bearbeitung der Anfrage ist ein Timeout aufgetreten.
 components:
   schemas:
@@ -574,12 +574,12 @@ components:
       additionalProperties: false
       description: Eintrag im Verzeichnis.
       example:
-        providerId: '1234567890123'
+        providerId: "1234567890123"
         apiId: example
         majorVersion: 1
         url: https://www.example.org/api/resource/v1
         additionalMetadata: null
-        lastUpdated: '2024-10-01T00:00:00+00:00'
+        lastUpdated: "2024-10-01T00:00:00+00:00"
         revision: 1
         status: Test
     ContactInfo:
@@ -608,7 +608,7 @@ components:
           type: string
           description: Vollqualifizierte Versionsnummer der implementierten Schnittstelle.
         contact:
-          $ref: '#/components/schemas/ContactInfo'
+          $ref: "#/components/schemas/ContactInfo"
         lastUpdated:
           type: string
           description: Zeitpunkt der letzten Aktualisierung dieser Information.
@@ -626,5 +626,5 @@ components:
         contact:
           email: support@example.org
           phone: +49 555 12345678
-        lastUpdated: '2024-10-01T00:00:00+00:00'
+        lastUpdated: "2024-10-01T00:00:00+00:00"
         revision: 1

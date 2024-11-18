@@ -237,16 +237,16 @@ channels:
         method: GET
     messages:
       SubscriptionRequestMessage:
-        $ref: '#/components/messages/SubscriptionRequestMessage'
+        $ref: "#/components/messages/SubscriptionRequestMessage"
       DirectoryNotificationMessage:
-        $ref: '#/components/messages/DirectoryNotificationMessage'
+        $ref: "#/components/messages/DirectoryNotificationMessage"
 operations:
   subscribe:
     action: send
     channel:
-      $ref: '#/channels/subscriptions'
+      $ref: "#/channels/subscriptions"
     messages:
-      - $ref: '#/channels/subscriptions/messages/SubscriptionRequestMessage'
+      - $ref: "#/channels/subscriptions/messages/SubscriptionRequestMessage"
     summary: Verwalten von Subscriptions
     description: >-
       Der Client teilt dem Server über diese Operation mit, für welche
@@ -276,9 +276,9 @@ operations:
   notify:
     action: receive
     channel:
-      $ref: '#/channels/subscriptions'
+      $ref: "#/channels/subscriptions"
     messages:
-      - $ref: '#/channels/subscriptions/messages/DirectoryNotificationMessage'
+      - $ref: "#/channels/subscriptions/messages/DirectoryNotificationMessage"
     summary: Benachrichtigen des Clients
     description: >-
       Der Server benachrichtigt den Client mittels dieser Operation über
@@ -510,13 +510,13 @@ components:
         Benachrichtigung vom Server an den Client über Änderungen am
         Verzeichnis.
       payload:
-        $ref: '#/components/schemas/DirectoryNotification'
+        $ref: "#/components/schemas/DirectoryNotification"
     SubscriptionRequestMessage:
       description: >-
         Nachricht vom Client an den Server, um die aktiven Subscriptions zu
         verwalten.
       payload:
-        $ref: '#/components/schemas/SubscriptionRequest'
+        $ref: "#/components/schemas/SubscriptionRequest"
   schemas:
     ApiRecord:
       type: object
@@ -627,12 +627,12 @@ components:
             Der Zeitpunkt, an dem diese Benachrichtigung erzeugt wurde. Der Wert
             MUSS gemäß ISO 8601 formatiert und als UTC angeben werden.
         serviceInfo:
-          $ref: '#/components/schemas/ServiceInfo'
+          $ref: "#/components/schemas/ServiceInfo"
         modified:
           type: array
           description: Hinzugefügte oder geänderte Verzeichniseinträge.
           items:
-            $ref: '#/components/schemas/SignedApiRecord'
+            $ref: "#/components/schemas/SignedApiRecord"
         redirected:
           type: array
           description: Konfigurierte Redirects für Verzeichniseinträge.
@@ -642,7 +642,7 @@ components:
               - recordRef
             properties:
               recordRef:
-                $ref: '#/components/schemas/ApiRecordRef'
+                $ref: "#/components/schemas/ApiRecordRef"
               url:
                 type: string
                 description: >-
@@ -653,7 +653,7 @@ components:
           type: array
           description: Gelöschte Verzeichniseinträge.
           items:
-            $ref: '#/components/schemas/ApiRecordRef'
+            $ref: "#/components/schemas/ApiRecordRef"
         canceled:
           type: array
           description: Beendete Subscriptions.
@@ -664,7 +664,7 @@ components:
               - canceledByClient
             properties:
               recordRef:
-                $ref: '#/components/schemas/ApiRecordRef'
+                $ref: "#/components/schemas/ApiRecordRef"
               canceledByClient:
                 type: boolean
                 description: >-
@@ -677,7 +677,7 @@ components:
                   wurde.
             additionalProperties: false
         error:
-          $ref: '#/components/schemas/Error'
+          $ref: "#/components/schemas/Error"
       additionalProperties: false
     Error:
       type: object
@@ -750,7 +750,7 @@ components:
         - signingCert
       properties:
         content:
-          $ref: '#/components/schemas/ApiRecord'
+          $ref: "#/components/schemas/ApiRecord"
         signature:
           type: string
           description: >-
@@ -786,7 +786,7 @@ components:
               - recordRef
             properties:
               recordRef:
-                $ref: '#/components/schemas/ApiRecordRef'
+                $ref: "#/components/schemas/ApiRecordRef"
               knownRevision:
                 type: integer
                 minimum: 0
@@ -799,5 +799,5 @@ components:
           type: array
           description: Zu kündigende Subscriptions.
           items:
-            $ref: '#/components/schemas/ApiRecordRef'
+            $ref: "#/components/schemas/ApiRecordRef"
       additionalProperties: false
