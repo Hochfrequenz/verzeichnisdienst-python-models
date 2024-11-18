@@ -38,6 +38,18 @@ my_json = {
 my_strongly_typed_record = ApiRecord.model_validate(my_json)
 ```
 
+or
+
+```python
+from verzeichnisdienst.v1.websocket import Contact
+
+my_json_contact = {
+    "email": "verzeichnis@hochfrequenz.de",
+    "phone": "0049123457890"
+}
+my_strongly_typed_contact = Contact.model_validate(my_json_contact)
+```
+
 See the [tests](unittests/test_models.py) for more examples.
 
 ## Project Structure
