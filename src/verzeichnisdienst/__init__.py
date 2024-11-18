@@ -1,5 +1,6 @@
 """
-The package verzeichnisdienst contains model classes that are used in the Verzeichnisdienst API by EDI@Energy.
+The package verzeichnisdienst contains model classes that are used in the Verzeichnisdienst API
+by EDI@Energy.
 The raw data are published on Swagger Hub:
 https://app.swaggerhub.com/apis-docs/edi_energy/Verzeichnisdienst_Web-API_2024_10_01/1.0.0
 """
