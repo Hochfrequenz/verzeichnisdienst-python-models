@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+src/_verzeichnisdienst_version.py
+
 # Distribution / packaging
 .Python
 build/
