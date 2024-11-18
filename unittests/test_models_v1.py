@@ -1,19 +1,20 @@
 from typing import Any
 
 import pytest
-from maloident.v1.models import IdentificationParameter, ResultNegative, ResultPositive
 
-from .example_jsons_v1 import negative_response_body, positive_response_body, request_body
+from verzeichnisdienst.v1.models import ApiRecord, ContactInfo, ServiceInfo
+
+from .example_jsons_v1 import api_record, contact_info, service_info
 
 
 @pytest.mark.parametrize(
     "json_dict",
     [
-        request_body,
+        api_record,
     ],
 )
-def test_request_model(json_dict: dict[str, Any]) -> None:
-    model = IdentificationParameter.model_validate(json_dict)
+def test_api_record(json_dict: dict[str, Any]) -> None:
+    model = ApiRecord.model_validate(json_dict)
     re_serialized = model.model_dump(mode="json")
     assert re_serialized == json_dict
 
@@ -21,11 +22,11 @@ def test_request_model(json_dict: dict[str, Any]) -> None:
 @pytest.mark.parametrize(
     "json_dict",
     [
-        positive_response_body,
+        contact_info,
     ],
 )
-def test_positive_response_model(json_dict: dict[str, Any]) -> None:
-    model = ResultPositive.model_validate(json_dict)
+def test_contact_record(json_dict: dict[str, Any]) -> None:
+    model = ContactInfo.model_validate(json_dict)
     re_serialized = model.model_dump(mode="json")
     assert re_serialized == json_dict
 
@@ -33,10 +34,10 @@ def test_positive_response_model(json_dict: dict[str, Any]) -> None:
 @pytest.mark.parametrize(
     "json_dict",
     [
-        negative_response_body,
+        service_info,
     ],
 )
-def test_negative_response_model(json_dict: dict[str, Any]) -> None:
-    model = ResultNegative.model_validate(json_dict)
+def test_service_inf(json_dict: dict[str, Any]) -> None:
+    model = ServiceInfo.model_validate(json_dict)
     re_serialized = model.model_dump(mode="json")
     assert re_serialized == json_dict
