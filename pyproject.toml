@@ -55,8 +55,8 @@ dev = [
 
 
 [project.urls]
-Changelog = "https://github.com/Hochfrequenz/malo-ident-python-models/releases"
-Homepage = "https://github.com/Hochfrequenz/malo-ident-python-models"
+Changelog = "https://github.com/Hochfrequenz/verzeichnisdienst-python-models/releases"
+Homepage = "https://github.com/Hochfrequenz/verzeichnisdienst-python-models"
 
 [tool.black]
 line-length = 120
