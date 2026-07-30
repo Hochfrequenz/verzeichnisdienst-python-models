@@ -27,4 +27,8 @@ jobs:
             isort)
               uv run --group linting ruff check --select I .
               ;;
+            *)
+              echo "Unknown matrix.tool value: ${{ matrix.tool }}" >&2
+              exit 1
+              ;;
           esac
