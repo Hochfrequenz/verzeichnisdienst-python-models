@@ -20,4 +20,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: ${{ matrix.tool }} Code Formatter
         run: |
-          uv run --group formatting ${{ matrix.tool }} . --check
+          case "${{ matrix.tool }}" in
+            black)
+              uv run --group linting ruff format --check .
+              ;;
+            isort)
+              uv run --group linting ruff check --select I .
+              ;;
+          esac

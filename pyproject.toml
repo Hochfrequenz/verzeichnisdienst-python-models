@@ -27,8 +27,8 @@ tests = [
     "pytest==8.4.2"
 ]
 linting = [
-    "pylint==4.0.6",
-    {include-group = "tests"}
+    {include-group = "tests"},
+    "ruff==0.16.0",
 ]
 type_check = [
     "mypy[pydantic]==1.19.1",
@@ -41,13 +41,9 @@ coverage = [
     "coverage==7.15.2",
     {include-group = "tests"}
 ]
-formatting = [
-    "black==26.5.1",
-    "isort==8.0.1"
-]
 codegen = [
     "datamodel-code-generator==0.71.0",
-    {include-group = "formatting"}
+    {include-group = "linting"}
 ]
 dev = [
     "pre-commit",
@@ -55,8 +51,7 @@ dev = [
     {include-group = "linting"},
     {include-group = "type_check"},
     {include-group = "coverage"},
-    {include-group = "spell_check"},
-    {include-group = "formatting"}
+    {include-group = "spell_check"}
 ]
 
 [tool.uv]
@@ -65,7 +60,6 @@ default-groups = []
 [tool.uv.dependency-groups]
 linting.requires-python = ">=3.10"
 coverage.requires-python = ">=3.10"
-formatting.requires-python = ">=3.10"
 codegen.requires-python = ">=3.10"
 dev.requires-python = ">=3.10"
 
@@ -73,16 +67,19 @@ dev.requires-python = ">=3.10"
 Changelog = "https://github.com/Hochfrequenz/verzeichnisdienst-python-models/releases"
 Homepage = "https://github.com/Hochfrequenz/verzeichnisdienst-python-models"
 
-[tool.black]
+[tool.ruff]
 line-length = 120
-target_version = ["py39", "py310", "py311", "py312", "py313"]
+extend-exclude = ["*.md"]
 
-[tool.isort]
-line_length = 120
-profile = "black"
-
-[tool.pylint."MESSAGES CONTROL"]
-max-line-length = 120
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "UP", "B", "N", "PL", "RUF"]
+ignore = [
+    "PLR0913", # too-many-arguments
+    "PLR0917", # too-many-positional-arguments
+    "PLR0912", # too-many-branches
+    "PLR0915", # too-many-statements
+    "PLR2004", # magic-value-comparison
+]
 
 [mypy]
 truethy-bool = true
