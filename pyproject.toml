@@ -28,7 +28,7 @@ tests = [
 ]
 linting = [
     {include-group = "tests"},
-    "ruff==0.16.0",
+    "ruff==0.16.1",
 ]
 type_check = [
     "mypy[pydantic]==1.19.1",
