@@ -42,7 +42,7 @@ coverage = [
     {include-group = "tests"}
 ]
 codegen = [
-    "datamodel-code-generator==0.72.3",
+    "datamodel-code-generator==0.74.0",
     {include-group = "linting"}
 ]
 dev = [
