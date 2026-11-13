@@ -264,7 +264,7 @@ wheels = [
 
 [[package]]
 name = "datamodel-code-generator"
-version = "0.88.0"
+version = "0.92.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "argcomplete" },
@@ -279,9 +279,9 @@ dependencies = [
     { name = "tomli", marker = "python_full_version < '3.11'" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/95/91/f11d95a6ddcd88ed3cbf9cae8e2f73d20cc938e2e4ffa232109bcc2a7f7a/datamodel_code_generator-0.88.0.tar.gz", hash = "sha256:c44729fd1fa6fa011a916329bc4443fb4774b03f777a39846dd5fe5ac6a0bfd7", size = 8031362, upload-time = "2026-11-02T15:32:17.939Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b1/1b/1102c045161715e2dc3cf1664b8dbc71b5681e91b6cd368d4386447580eb/datamodel_code_generator-0.92.0.tar.gz", hash = "sha256:1f4537e6a5970d104b781d833443b3ba34b246105de396e5368f8a58bc7bd9c2", size = 9489462, upload-time = "2026-11-10T03:38:35.45Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c9/8b/e12d95563a9f0f27b2af86110b6f6a5957972f93bb68b0716aaf6cd40674/datamodel_code_generator-0.88.0-py3-none-any.whl", hash = "sha256:7efca05a350bdee6759d2761d4fc8f9233781f99bb1bc8d7110f3e816bfafd2e", size = 2077797, upload-time = "2026-11-02T15:32:15.278Z" },
+    { url = "https://files.pythonhosted.org/packages/52/f4/9cf836c11a9c33d110c9a4b388631ce7980d9e054a757d2a2d1bebd84449/datamodel_code_generator-0.92.0-py3-none-any.whl", hash = "sha256:763875be7a125aa0abe6a55a2614bbfaded798dca68aabb904a590a41199abd3", size = 2433507, upload-time = "2026-11-10T03:38:32.805Z" },
 ]
 
 [[package]]
@@ -1401,7 +1401,7 @@ requires-dist = [{ name = "pydantic", specifier = ">=2" }]
 
 [package.metadata.requires-dev]
 codegen = [
-    { name = "datamodel-code-generator", marker = "python_full_version >= '3.10'", specifier = "==0.88.0" },
+    { name = "datamodel-code-generator", marker = "python_full_version >= '3.10'", specifier = "==0.92.0" },
     { name = "pytest", marker = "python_full_version >= '3.10'", specifier = "==8.4.2" },
     { name = "ruff", marker = "python_full_version >= '3.10'", specifier = "==0.17.4" },
 ]
